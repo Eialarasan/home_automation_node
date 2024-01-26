@@ -23,13 +23,13 @@ export const io = socketIO(HttpServer, {
   },
 });
 
-setInterval(()=>{
-  const job = scheduleEvent(schedule,io)
-  io.on('connection', socket => {
-    console.log('A user connected');
+// setInterval(()=>{
+//   const job = scheduleEvent(schedule,io)
+//   io.on('connection', socket => {
+//     console.log('A user connected');
     
-  });
-},1000)
+//   });
+// },1000)
 
 
 
