@@ -87,7 +87,7 @@ class DeviceService {
                 return res.send({ status: "failed", message: "Device not found", response_code: 1 })
             } else {
                 await findId.destroy()
-                return res.send({ status: "success", message: "Device deleted successfully" })
+                return res.send({ status: "success", message: "Device deleted successfully", response_code: 0 })
             }
         } catch (error) {
             console.error("DELETE_Device", error)

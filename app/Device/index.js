@@ -28,7 +28,7 @@ export default [
     },
     {
         path: '/delete',
-        type: MediaType.DELETE,
+        type: MediaType.POST,
         middleware: [authendicateToken],
         method: Handler.deleteDevice,
         options: {}
