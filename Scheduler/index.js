@@ -7,7 +7,8 @@ function cancelExistingJobs() {
     scheduledJobs.forEach(job => job.cancel());
     scheduledJobs = [];
   }
-export const scheduleEvent = async (schedule, io) => {
+export const scheduleEvent = async (schedule, io,mqtclient) => {
+ 
     cancelExistingJobs()
     const scheduleList = await Entity.Schedule.findAll()
     const convertedArray = scheduleList.map(item => {

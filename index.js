@@ -1,15 +1,22 @@
 import { scheduleEvent } from './Scheduler';
+import { Puplisher } from './Scheduler/publisher';
+import { Subscriber } from './Scheduler/Subscriber';
+
 import app from './main'
 import http from 'http'
 
 const HttpServer = http.createServer(app);
 const socketIO = require('socket.io')
+const mqtt = require('mqtt');
 require('dotenv').config()
 const port=process.env.PORT
 app.set('port', port)
 
 HttpServer.listen(port);
 HttpServer.on('listening', onListening);
+
+const mqttBrokerUrl = 'mqtt://broker.hivemq.com';
+const mqttClient = mqtt.connect(mqttBrokerUrl);
 
 const cors=require('cors')
 export const schedule = require('node-schedule');
@@ -23,16 +30,9 @@ export const io = socketIO(HttpServer, {
   },
 });
 
-// setInterval(()=>{
-//   const job = scheduleEvent(schedule,io)
-//   io.on('connection', socket => {
-//     console.log('A user connected');
-    
-//   });
-// },1000)
 
-
-
+Puplisher(mqttClient,io)
+Subscriber(mqttClient,io,schedule.scheduleJob)
 
 
 
