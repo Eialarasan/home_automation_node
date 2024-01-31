@@ -26,10 +26,12 @@ class HomeService {
         }
     }
 
-    async GetHomeList(res) {
+    async GetHomeList(res,userId) {
         try {
             const HomeList = await Entity.Home.findAll({
-               
+               where:{
+                userId:userId
+               }
             })
             return res.send({ status: 'success', message: 'success', response: HomeList, response_code: 0 })
         } catch (error) {

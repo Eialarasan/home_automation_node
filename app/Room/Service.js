@@ -21,7 +21,7 @@ class RoomService {
                 return res.send({ status: "success", message: "Room added successfully", response_code: 0 })
             }
         } catch (error) {
-            console.error("ADD_Room", error)
+            console.error("ADD_ROOM", error)
             return res.status(500).send({ response_code: 2, response_message: "Sorry something went wrong" });
         }
     }

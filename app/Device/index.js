@@ -3,12 +3,13 @@
 import { authendicateToken } from "../../Security/JwtAuth";
 import { MediaType } from "../../config";
 import Handler from "./Handler";
+import { Validation } from "./Validation";
 
 export default [
     {
         path: '/list',
         type: MediaType.GET,
-        middleware:[authendicateToken],
+        middleware:[authendicateToken,Validation],
         method:Handler.getDeviceList,
         options: {}
     },

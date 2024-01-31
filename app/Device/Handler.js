@@ -4,19 +4,9 @@ class DeviceService {
 
     async addDevice(req, res) {
         try {
-            const data = req.body
-            const userId = req.user.userId
-            const { deviceName, homeId, roomId } = data
-            if (!deviceName) {
-                return res.send({ response_code: 2, response_message: "Device name is missing", response_code: 1 });
-            } else if (!homeId) {
-                return res.send({ response_code: 2, response_message: "homeid is missing", response_code: 1 });
-            }
-            else if (!roomId) {
-                return res.send({ response_code: 2, response_message: "roomid is missing", response_code: 1 });
-            } else {
+            
                 await Service.AddDevice(data, res, userId)
-            }
+            
         } catch (error) {
             console.error("ADD_DEVICE", error)
             return res.status(500).send({ response_code: 2, response_message: "Sorry something went wrong" });
