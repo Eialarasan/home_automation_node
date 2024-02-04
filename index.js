@@ -1,4 +1,3 @@
-import { scheduleEvent } from './Scheduler';
 import { Puplisher } from './Scheduler/publisher';
 import { Subscriber } from './Scheduler/Subscriber';
 
