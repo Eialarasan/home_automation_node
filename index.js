@@ -31,8 +31,8 @@ export const io = socketIO(HttpServer, {
 });
 
 
-// Puplisher(mqttClient,io)
-// Subscriber(mqttClient,io,schedule.scheduleJob)
+Puplisher(mqttClient,io)
+Subscriber(mqttClient,io,schedule.scheduleJob)
 
 
 

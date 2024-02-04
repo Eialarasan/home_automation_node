@@ -43,7 +43,7 @@ class RoomService {
             const data = req.body
             await Service.DeleteRoom(data, res)
         } catch (error) {
-            console.error("DELETE_ROOM", error)
+            // console.error("DELETE_ROOM", error)
             return res.status(500).send({ response_code: 2, response_message: "Sorry something went wrong" });
         }
     }

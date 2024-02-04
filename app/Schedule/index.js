@@ -9,21 +9,21 @@ export default [
     {
         path: '/list',
         type: MediaType.GET,
-        middleware:[authendicateToken,Validation],
+        middleware:[authendicateToken],
         method:Handler.getScheduleList,
         options: {}
     },
     {
         path: '/add',
         type: MediaType.POST,
-        middleware: [authendicateToken],
+        middleware: [authendicateToken,Validation],
         method: Handler.addSchedule,
         options: {}
     },
     {
         path: '/update',
         type: MediaType.POST,
-        middleware: [authendicateToken],
+        middleware: [authendicateToken,Validation],
         method: Handler.updateSchedule,
         options: {}
     },

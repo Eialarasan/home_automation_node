@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for Schedule/Handler.js</title>
+    <title>Code coverage report for Room/Handler.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">Schedule</a> Handler.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">Room</a> Handler.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">86.95% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>22/22</span>
+                <span class='fraction'>20/23</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">86.95% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>22/22</span>
+                <span class='fraction'>20/23</span>
             </div>
         
             
@@ -110,7 +110,10 @@
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -119,25 +122,18 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -153,58 +149,71 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Service from "./Service";
 &nbsp;
-class ScheduleService {
+class RoomService {
 &nbsp;
-    async addSchedule(req, res) {
+    async addRoom(req, res) {
         try {
             const data = req.body
             const userId = req.user.userId
-                await Service.AddSchedule(data, res, userId)
+            const { roomName,homeId } = data
+            if (!roomName) {
+                return res.send({ response_code: 2, response_message: "Room name is missing", response_code: 1 });
+            }  else <span class="missing-if-branch" title="else path not taken" >E</span>{
+<span class="cstat-no" title="statement not covered" >                await Service.AddRoom(data, res, userId)</span>
+            }
         } catch (error) {
-            console.error("ADD_Schedule", error)
-            return res.status(500).send({ response_code: 2, response_message: "Sorry something went wrong" });
+<span class="cstat-no" title="statement not covered" >            console.error("ADD_ROOM", error)</span>
+<span class="cstat-no" title="statement not covered" >            return res.status(500).send({ response_code: 2, response_message: "Sorry something went wrong" });</span>
         }
     }
 &nbsp;
-    async getScheduleList(req, res) {
+    async getRoomList(req, res) {
         try {
-            const data=req.query
-&nbsp;
-            await Service.GetScheduleList(res,data)
+            const homeId=req.query
+            await Service.GetRoomList(res,homeId)
         } catch (error) {
-            console.error("GET_Schedule_LIST", error)
+            console.error("GET_ROOM_LIST", error)
             return res.status(500).send({ response_code: 2, response_message: "Sorry something went wrong" });
         }
     }
 &nbsp;
-    async updateSchedule(req, res) {
-        try {
-            const data = req.body
-            const { deviceId, homeId, roomId,startTime,endTime } = data
-            await Service.UpdateSchedule(data, res)
-        } catch (error) {
-            console.error("UPDATE_Schedule", error)
-            return res.status(500).send({ response_code: 2, response_message: "Sorry something went wrong" });
-        }
-    }
-&nbsp;
-    async deleteSchedule(req, res) {
+    async updateRoom(req, res) {
         try {
             const data = req.body
-            await Service.DeleteSchedule(data, res)
+                await Service.UpdateRoom(data, res)
         } catch (error) {
-            console.error("DELETE_SCHEDULE", error)
+            console.error("UPDATE_ROOM", error)
+            return res.status(500).send({ response_code: 2, response_message: "Sorry something went wrong" });
+        }
+    }
+&nbsp;
+    async deleteRoom(req, res) {
+        try {
+            const data = req.body
+            await Service.DeleteRoom(data, res)
+        } catch (error) {
+            // console.error("DELETE_ROOM", error)
             return res.status(500).send({ response_code: 2, response_message: "Sorry something went wrong" });
         }
     }
 }
-export default new ScheduleService();</pre></td></tr></table></pre>
+export default new RoomService();</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->

@@ -1,8 +1,8 @@
-import HomeService from'./Service'// Adjust the path as needed
-import Entity from '../../Entity/index'
+import HomeService from'../Service'// Adjust the path as needed
+import Entity from '../../../Entity/index'
 
-jest.mock('../../Entity/index', () => ({
-  Schedule: {
+jest.mock('../../../Entity/index', () => ({
+  Home: {
     findOne: jest.fn(),
     create: jest.fn(),
     findAll: jest.fn(),
@@ -12,7 +12,7 @@ jest.mock('../../Entity/index', () => ({
   Room: {},
 }));
 
-describe('ScheduleService', () => {
+describe('HomeService', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
@@ -254,5 +254,5 @@ describe('ScheduleService', () => {
      
     });
   });
-  // Add tests for other methods (GetScheduleList, UpdateSchedule, DeleteSchedule) similarly
+  // Add tests for other methods (GetHomeList, UpdateHome, DeleteHome) similarly
 });

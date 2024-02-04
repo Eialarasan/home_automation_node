@@ -1,8 +1,8 @@
-import RoomService from'./Service'// Adjust the path as needed
-import Entity from '../../Entity/index'
+import RoomService from'../Service'// Adjust the path as needed
+import Entity from '../../../Entity/index'
 
 // Mock the Entity module
-jest.mock('../../Entity/index', () => ({
+jest.mock('../../../Entity/index', () => ({
   Room: {
     findOne: jest.fn(),
     create: jest.fn(),
