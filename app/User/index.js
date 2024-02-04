@@ -1,21 +1,21 @@
 'use strict';
 
-import { authendicateToken } from "../../Security/JwtAuth";
 import { MediaType } from "../../config";
 import Handler from "./Handler";
+import { LoginValidation, Validation } from "./Validator";
 
 export default [
     {
         path: '/register',
         type: MediaType.POST,
-        middleware:[],
+        middleware:[Validation],
         method:Handler.UserRegister,
         options: {}
     },
     {
         path: '/login',
         type: MediaType.POST,
-        middleware: [],
+        middleware: [LoginValidation],
         method: Handler.UserLogin,
         options: {}
     },

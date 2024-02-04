@@ -31,3 +31,18 @@ export const Validation=(req,res,next)=>{
         next()
     }
 }
+
+export const LoginValidation=(req,res,next)=>{
+    
+    const data = req.body
+    const { email, password } = data
+    if (!email) {
+        return res.send({ response_code: 2, response_message: "email is missing", response_code: 1 });
+    } else if (!isValidEmail(email)) {
+        return res.send({ response_code: 2, response_message: "email is should be in correct format", response_code: 1 });
+    } else if (!password) {
+        return res.send({ response_code: 2, response_message: "password is missing", response_code: 1 });
+    } else {
+        next()
+    }
+}
